@@ -1,4 +1,4 @@
-const API_KEY = "af7c60edae1c4c9fb8f06b4d45212b2a";
+const API_KEY = "1e31ef6a9a8147f999bd3852df612ca4";
 const searchBtn = document.getElementById("searchBtn");
 const ingredientsInput = document.getElementById("ingredientsInput");
 const recipesContainer = document.getElementById("recipesContainer");
