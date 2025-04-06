@@ -1,4 +1,4 @@
-const API_KEY = "06204d327de24fcdbbd3a72aaa8c75b6";
+const API_KEY = "06204d327de24fcdbbd3a72aaa8c75b6";  // Make sure the key is correct
 const searchBtn = document.getElementById("searchBtn");
 const ingredientsInput = document.getElementById("ingredientsInput");
 const recipesContainer = document.getElementById("recipesContainer");
@@ -13,11 +13,20 @@ searchBtn.addEventListener("click", async () => {
   try {
     recipesContainer.innerHTML = "<p>Loading recipes...</p>";
 
+    // Fetching recipes based on ingredients
     const response = await fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(
         ingredients
       )}&number=5&ranking=1&ignorePantry=true&apiKey=${API_KEY}`
     );
+
+    // Log the response for debugging
+    console.log(response);
+
+    // Check if the response is okay
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
     const data = await response.json();
     recipesContainer.innerHTML = "";
@@ -31,6 +40,11 @@ searchBtn.addEventListener("click", async () => {
       const recipeDetailsResponse = await fetch(
         `https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}`
       );
+
+      if (!recipeDetailsResponse.ok) {
+        throw new Error(`HTTP error! Status: ${recipeDetailsResponse.status}`);
+      }
+
       const recipeDetails = await recipeDetailsResponse.json();
 
       const recipeEl = document.createElement("div");
@@ -44,7 +58,9 @@ searchBtn.addEventListener("click", async () => {
       recipesContainer.appendChild(recipeEl);
     }
   } catch (error) {
-    console.error(error);
-    recipesContainer.innerHTML = "<p>Something went wrong. Please try again.</p>";
+    console.error("Error:", error);  // Log detailed error
+    recipesContainer.innerHTML = `<p>Something went wrong: ${error.message}. Please try again.</p>`;
   }
 });
+
+    
