@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Baking Recipe Generator</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Baking Recipe Finder</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🍰 Baking Recipe Generator</h1>
-    <button id="generateBtn">Get a Recipe</button>
-    <div id="recipeContainer" class="hidden">
-      <h2 id="recipeTitle"></h2>
-      <img id="recipeImage" alt="Recipe Image">
-      <p id="recipeInstructions"></p>
-    </div>
+    <h1>🍪 Baking Recipe Finder</h1>
+    <input type="text" id="ingredientsInput" placeholder="Enter ingredients (e.g. sugar, flour)" />
+    <button id="searchBtn">Find Recipe</button>
+
+    <div id="recipesContainer"></div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
+
